@@ -19,7 +19,7 @@
 ---
 include:
   - board: seeeduino_xiao_ble
-    shield: xiao_tp
+    shield: zmk_uno
   #   - board: nice_nano_v2
   #     shield: corne_tp_left
   # - board: seeeduino_xiao_ble

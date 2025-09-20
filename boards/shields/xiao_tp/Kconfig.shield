@@ -1,4 +1,0 @@
-# Register the custom shield so -DSHIELD=xiao_tp is valid
-config SHIELD_XIAO_TP
-    def_bool $(shields_list_contains,xiao_tp)
-
