@@ -3,13 +3,7 @@ if SHIELD_XIAO_TP
 config ZMK_KEYBOARD_NAME
     default "XIAO TrackPoint"
 
-config ZMK_POINTING
-    default y
-
-config MOUSE_PS2
-    default y
-
-config MOUSE_PS2_UART
+config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
 endif # SHIELD_XIAO_TP

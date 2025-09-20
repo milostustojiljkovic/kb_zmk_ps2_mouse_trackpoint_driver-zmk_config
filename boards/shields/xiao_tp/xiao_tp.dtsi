@@ -5,6 +5,7 @@
 
 / {
     chosen {
-        // No keyboard matrix needed for TrackPoint-only device
+        // TrackPoint-only device - no keyboard matrix needed
+        // The PS/2 mouse will be configured in the overlay
     };
 };
