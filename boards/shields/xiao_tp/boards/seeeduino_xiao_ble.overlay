@@ -13,4 +13,3 @@
     ps2-reset-gpios = <&gpio0 4 GPIO_ACTIVE_HIGH>;
 };
 */
-
