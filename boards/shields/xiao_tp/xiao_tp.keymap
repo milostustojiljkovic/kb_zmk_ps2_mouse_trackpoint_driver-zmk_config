@@ -1,6 +1,9 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
+#define BASE 0
+#define MOUSE_TP 1
+
 #define HAS_MOUSE_TP
 
 #ifdef HAS_MOUSE_TP
