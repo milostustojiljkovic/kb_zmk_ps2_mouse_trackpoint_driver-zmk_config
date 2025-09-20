@@ -3,9 +3,30 @@
  * Minimal device tree for TrackPoint-only device
  */
 
+#include <dt-bindings/zmk/matrix_transform.h>
+
 / {
     chosen {
-        // TrackPoint-only device - no keyboard matrix needed
-        // The PS/2 mouse will be configured in the overlay
+        // TrackPoint-only device - minimal matrix for ZMK compatibility
+        zmk,kscan = &kscan0;
+        zmk,matrix-transform = &default_transform;
+    };
+
+    default_transform: keymap_transform_0 {
+        compatible = "zmk,matrix-transform";
+        columns = <1>;
+        rows = <1>;
+        // Single key for TrackPoint-only device
+        map = <
+            RC(0,0)
+        >;
+    };
+
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        wakeup-source;
+        diode-direction = "col2row";
+        // Minimal matrix - single key on D4 (P0.04) - not used by PS/2
+        row-gpios = <&gpio0 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
     };
 };
