@@ -28,5 +28,6 @@
         diode-direction = "col2row";
         // Minimal matrix - single key on D4 (P0.04) - not used by PS/2
         row-gpios = <&gpio0 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+        col-gpios = <&gpio0 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
     };
 };
