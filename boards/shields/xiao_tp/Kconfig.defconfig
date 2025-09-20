@@ -3,7 +3,8 @@ if SHIELD_XIAO_TP
 config ZMK_KEYBOARD_NAME
     default "XIAO TrackPoint"
 
-config ZMK_SPLIT_ROLE_CENTRAL
-    default y
+# TrackPoint-only device - not a split keyboard
+config ZMK_SPLIT
+    default n
 
 endif # SHIELD_XIAO_TP
