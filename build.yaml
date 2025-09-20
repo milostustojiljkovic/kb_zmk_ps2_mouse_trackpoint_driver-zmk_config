@@ -46,7 +46,7 @@
 include:
   # Main firmware build for XIAO BLE + tester shield (no keyboard, just TrackPoint)
   - board: seeeduino_xiao_ble
-    shield: tester_xiao
+    shield: xiao_tp
 
   # Settings Reset firmware
   # This can wipe all saved settings (Bluetooth, profiles, etc.)
