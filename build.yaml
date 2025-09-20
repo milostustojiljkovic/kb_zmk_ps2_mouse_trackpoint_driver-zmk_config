@@ -18,10 +18,12 @@
 #
 ---
 include:
+  - board: seeeduino_xiao_ble
+    shield: xiao_tp
   #   - board: nice_nano_v2
   #     shield: corne_tp_left
-  - board: seeeduino_xiao_ble
-    shield: corne_tp_right
+  # - board: seeeduino_xiao_ble
+  #   shield: corne_tp_right
   #
   #   # Alternative PINs firmware
   #   # This builds an additional firmware for the right half that overrides the
@@ -41,5 +43,5 @@ include:
   #   #
   #   # More info:
   #   # https://zmk.dev/docs/troubleshooting#split-keyboard-halves-unable-to-pair
-  - board: seeeduino_xiao_ble
-    shield: settings_reset
+  # - board: seeeduino_xiao_ble
+  #   shield: settings_reset

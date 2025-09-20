@@ -1,16 +1,16 @@
 / {
     mouse_ps2: ps2-mouse {
         compatible = "zmk,ps2-mouse";
-
-        ps2-port = <&uart0>;
-
-        ps2-data-pin = <2>;   /* P0.02 = D0 */
-        ps2-clock-pin = <3>;  /* P0.03 = D1 */
-
+        ps2-port = <&uart0>;   /* Use UART backend */
+        ps2-data-pin  = <2>;   /* D0 = P0.02 */
+        ps2-clock-pin = <3>;   /* D1 = P0.03 */
         status = "okay";
     };
 };
 
+/* If you wired RESET to GPIO (like D4=P0.04), add:
 &mouse_ps2 {
-    ps2-reset-gpios = <&gpio0 4 GPIO_ACTIVE_HIGH>; /* D4 = P0.04 */
+    ps2-reset-gpios = <&gpio0 4 GPIO_ACTIVE_HIGH>;
 };
+*/
+
