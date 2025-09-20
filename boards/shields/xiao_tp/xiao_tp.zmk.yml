@@ -1,0 +1,6 @@
+file_format: "1"
+id: xiao_tp
+name: "XIAO TrackPoint Only"
+type: shield
+features:
+  - pointing

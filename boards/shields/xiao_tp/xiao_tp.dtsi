@@ -1,0 +1,10 @@
+/*
+ * XIAO TrackPoint Only Shield
+ * Minimal device tree for TrackPoint-only device
+ */
+
+/ {
+    chosen {
+        // No keyboard matrix needed for TrackPoint-only device
+    };
+};
