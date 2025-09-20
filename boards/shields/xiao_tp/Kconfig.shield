@@ -1,0 +1,4 @@
+# Register the custom shield so -DSHIELD=xiao_tp is valid
+config SHIELD_XIAO_TP
+    bool "xiao_tp"
+
