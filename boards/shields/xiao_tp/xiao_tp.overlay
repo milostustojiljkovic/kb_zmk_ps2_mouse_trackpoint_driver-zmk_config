@@ -75,6 +75,7 @@
         compatible = "nordic,nrf-uarte";
 
         current-speed = MOUSE_PS2_UART_BAUD_RATE;
+        parity = "none";
         pinctrl-0 = <&uart0_ps2_default>;
         pinctrl-1 = <&uart0_ps2_off>;
 
