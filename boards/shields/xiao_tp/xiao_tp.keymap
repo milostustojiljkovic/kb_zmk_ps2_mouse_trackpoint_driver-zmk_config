@@ -21,5 +21,11 @@
                 &kp A
             >;
         };
+        mouse_layer {
+            display-name = "Mouse";
+            bindings = <
+                &kp A
+            >;
+        };
     };
 };
