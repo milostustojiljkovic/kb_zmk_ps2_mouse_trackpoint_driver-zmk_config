@@ -25,7 +25,7 @@
 #define MOUSE_PS2_PIN_UNEXPOSED_RX <NRF_PSEL(UART_RX, 0, 28)>
 
 // Optional: Configure RESET pin if needed
-// #define MOUSE_PS2_PIN_RST_PRO_MICRO <&gpio0 4 GPIO_ACTIVE_HIGH>
+#define MOUSE_PS2_PIN_RST_PRO_MICRO <&gpio0 4 GPIO_ACTIVE_HIGH>
 
 // This define can be used in the keymap file to check whether the device tree
 // configs in this file are present
