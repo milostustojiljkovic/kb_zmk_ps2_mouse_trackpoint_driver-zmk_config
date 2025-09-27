@@ -5,8 +5,8 @@
 
 #include "xiao_tp.dtsi"
 
-// Pick the PS/2 driver - Use UART driver for better performance
-#define MOUSE_PS2_DRIVER_UART
+// Pick the PS/2 driver - Use GPIO driver for better compatibility
+// #define MOUSE_PS2_DRIVER_UART
 
 // Configure pins for Seeed XIAO BLE
 // DATA pin: D0 (P0.02), CLOCK pin: D1 (P0.03)
