@@ -24,13 +24,7 @@
         mouse_layer {
             display-name = "Mouse";
             bindings = <
-                &kp MS_UP
-                &kp MS_LEFT
-                &kp MS_DOWN
-                &kp MS_RIGHT
-                &kp MS_BTN1
-                &kp MS_BTN2
-                &kp MS_BTN3
+                &mkp LCLK
             >;
         };
     };
