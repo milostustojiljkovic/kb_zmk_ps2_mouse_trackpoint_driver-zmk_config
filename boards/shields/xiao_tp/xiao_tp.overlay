@@ -5,8 +5,8 @@
 
 #include "xiao_tp.dtsi"
 
-// Pick the PS/2 driver - Use GPIO driver for better compatibility
-// #define MOUSE_PS2_DRIVER_UART
+// Pick the PS/2 driver - Use UART driver like Corne example
+#define MOUSE_PS2_DRIVER_UART
 
 // Configure pins for Seeed XIAO BLE
 // DATA pin: D0 (P0.02), CLOCK pin: D1 (P0.03)
@@ -19,7 +19,7 @@
 #define MOUSE_PS2_PIN_SDA_PINCTRL <NRF_PSEL(UART_RX, 0, 2)>
 
 // Configure UART BAUD Rate (use default 14400 like Corne example)
-#define MOUSE_PS2_UART_BAUD_RATE <9600>
+#define MOUSE_PS2_UART_BAUD_RATE <14400>
 
 // Unexposed UART pins for XIAO BLE
 #define MOUSE_PS2_PIN_UNEXPOSED_TX <NRF_PSEL(UART_TX, 0, 27)>
@@ -317,17 +317,6 @@
         rst-gpios = MOUSE_PS2_PIN_RST_PRO_MICRO;
 #endif
 
-        // TrackPoint Settings
-        tp-sensitivity = <128>;
-        tp-val6-upper-speed = <97>;
-        tp-neg-inertia = <6>;
-        
-        // Optional: Enable press-to-select (tap to click)
-        // tp-press-to-select;
-        // tp-press-to-select-threshold = <10>;
-        
-        // Optional: Adjust sampling rate if needed
-        // sampling-rate = <60>;
     };
 
     mouse_ps2_input_listener: mouse_ps2_input_listener {
@@ -336,9 +325,8 @@
 
         device = <&mouse_ps2>;
 
-        // Layer toggle settings
-        layer-toggle = <1>;
-        layer-toggle-delay-ms = <250>;
-        layer-toggle-timeout-ms = <250>;
+		// Some of the available settings depend on the keymap. So they
+		// are adjusted in...
+		// zmk-config/config/includes/mouse_tp.dtsi
     };
 };
