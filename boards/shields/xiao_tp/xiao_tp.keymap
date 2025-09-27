@@ -1,5 +1,10 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/mouse.h>
+#include <behaviors/mouse_keys.dtsi>
+
+#define BASE 0
+#define MOUSE_TP 1
 
 #define HAS_MOUSE_TP
 
@@ -16,6 +21,17 @@
             display-name = "Base";
             bindings = <
                 &kp A
+            >;
+        };
+        // Automatically activated when the mouse or trackpoint moves.
+        // Configured in `include/mouse_tp.dtsi`.
+        MouseTP_layer {
+            display-name = "TP";
+            bindings = <
+                &trans                   &trans                   &trans                   &trans                   &msc SCRL_UP             &trans                        &trans                   &trans                   &trans                   &trans                   &trans                    &trans
+                &trans                   &trans                   &trans                   &trans                   &trans                   &trans                        &trans                   &trans                   &trans                   &trans                   &trans                    &trans
+                &trans                   &trans                   &trans                   &trans                   &msc SCRL_DOWN           &trans                        &trans                   &trans                   &trans                   &trans                   &trans                    &trans
+                                                                                &mkp MCLK                &mkp LCLK                &mkp RCLK                     &mkp MCLK                &mkp LCLK                &mkp RCLK
             >;
         };
     };

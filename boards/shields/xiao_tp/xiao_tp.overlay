@@ -325,8 +325,9 @@
 
         device = <&mouse_ps2>;
 
-		// Some of the available settings depend on the keymap. So they
-		// are adjusted in...
-		// zmk-config/config/includes/mouse_tp.dtsi
+		// Layer toggle settings
+		layer-toggle = <1>;
+		layer-toggle-delay-ms = <250>;
+		layer-toggle-timeout-ms = <250>;
     };
 };
