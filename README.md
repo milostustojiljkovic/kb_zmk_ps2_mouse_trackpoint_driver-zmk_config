@@ -13,9 +13,10 @@ You can also learn more in the README of the [driver module repo](https://github
 - [1. Pre-built firmware](#1-pre-built-firmware)
     - [1.1. Low-frequency pins, but compatible with all corne keyboards](#11-low-frequency-pins-but-compatible-with-all-corne-keyboards)
     - [1.2. High-frequency pins, but NOT compatible with all Corne variations](#12-high-frequency-pins-but-not-compatible-with-all-corne-variations)
-- [2. How to adjust Tackpoint settings](#2-how-to-adjust-tackpoint-settings)
-- [3. Keymap](#3-keymap)
-- [4. Related Resources](#4-related-resources)
+- [2. XIAO BLE TrackPoint Pin Mapping](#2-xiao-ble-trackpoint-pin-mapping)
+- [3. How to adjust Tackpoint settings](#3-how-to-adjust-tackpoint-settings)
+- [4. Keymap](#4-keymap)
+- [5. Related Resources](#5-related-resources)
 
 ## 1. Pre-built firmware
 
@@ -61,7 +62,65 @@ With those keyboards, you can use the following pins for your PS/2 mouse or Trac
 
 ![High Frequency Version Pinout](img/pins_high_freq.png)
 
-## 2. How to adjust Tackpoint settings
+## 2. XIAO BLE TrackPoint Pin Mapping
+
+This configuration supports the **Seeeduino XIAO BLE** board for TrackPoint-only devices. The XIAO BLE provides a compact, wireless solution for TrackPoint integration.
+
+### 2.1. XIAO BLE Pin Assignment
+
+| XIAO BLE Pin | nRF52840 Pin | Function | Description |
+|--------------|--------------|----------|-------------|
+| **D0** | P0.02 | SDA (Data) | PS/2 Data line - requires 4.7kΩ pull-up resistor |
+| **D1** | P0.03 | SCL (Clock) | PS/2 Clock line - requires 4.7kΩ pull-up resistor |
+| **D2** | P0.04 | RESET | TrackPoint Power-On-Reset (optional) |
+| **D5** | P0.07 | Matrix Row | Single key matrix row (for TrackPoint-only device) |
+| **D6** | P0.08 | Matrix Col | Single key matrix column (for TrackPoint-only device) |
+
+### 2.2. Complete XIAO BLE Pin Reference
+
+| XIAO Pin | nRF52840 Pin | Available | Notes |
+|----------|--------------|-----------|-------|
+| D0 | P0.02 | ✅ **SDA** | PS/2 Data line |
+| D1 | P0.03 | ✅ **SCL** | PS/2 Clock line |
+| D2 | P0.04 | ✅ **RESET** | TrackPoint reset |
+| D3 | P0.05 | ✅ Free | Available for other uses |
+| D4 | P0.06 | ✅ Free | Available for other uses |
+| D5 | P0.07 | ✅ **Matrix** | Key matrix row |
+| D6 | P0.08 | ✅ **Matrix** | Key matrix column |
+| D7 | P0.09 | ✅ Free | Available for other uses |
+| D8 | P0.10 | ✅ Free | Available for other uses |
+| D9 | P0.11 | ✅ Free | Available for other uses |
+| D10 | P0.12 | ✅ Free | Available for other uses |
+| D11 | P0.13 | ✅ Free | Available for other uses |
+
+### 2.3. Hardware Requirements
+
+- **Seeeduino XIAO BLE** board
+- **TrackPoint module** (IBM/Lenovo compatible)
+- **4.7kΩ pull-up resistors** (2x) for SDA and SCL lines
+- **Optional**: Reset circuit for TrackPoint Power-On-Reset
+
+### 2.4. Wiring Diagram
+
+```
+XIAO BLE          TrackPoint
+-------          -----------
+D0 (P0.02)  --->  DATA  (with 4.7kΩ pull-up to 3.3V)
+D1 (P0.03)  --->  CLOCK (with 4.7kΩ pull-up to 3.3V)
+D2 (P0.04)  --->  RESET (optional)
+3.3V        --->  VCC
+GND         --->  GND
+```
+
+### 2.5. Configuration Notes
+
+- **Driver**: UART PS/2 driver (better performance than GPIO)
+- **Baud Rate**: 14400 (compatible with most TrackPoints)
+- **Bluetooth**: Enabled with enhanced power settings
+- **Logging**: Comprehensive debug logging enabled
+- **Matrix**: Minimal 1x1 matrix for TrackPoint-only device
+
+## 3. How to adjust Tackpoint settings
 
 TrackPoints have various settings that can change the algorithm for the mouse movement, but recompiling and reflashing your keyboard to test them is very tedious.
 
@@ -106,13 +165,13 @@ Please refer to [this zmk documentation on how to read USB logs](https://zmk.dev
 
 You can then copy these settings into your config.
 
-## 3. Keymap
+## 4. Keymap
 
 ![Keymap Image](keymap_img/keymap.svg)
 
 The image was generated using [caksoylar's awesome keymap-drawer](https://github.com/caksoylar/keymap-drawer) and you can update it using the shell script in [./keymap_img/](keymap_img/).
 
-## 4. Related Resources
+## 5. Related Resources
 
 - [My personal, more advanced zmk-config](https://github.com/infused-kim/zmk-config)
 - [PS/2 Mouse & TrackPoint driver module for zmk](https://github.com/infused-kim/kb_zmk_ps2_mouse_trackpoint_driver)

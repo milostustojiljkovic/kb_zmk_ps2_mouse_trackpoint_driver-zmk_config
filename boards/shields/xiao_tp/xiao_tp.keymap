@@ -11,7 +11,7 @@
 #ifdef HAS_MOUSE_TP
   // We store the trackpoint settings in a separate file
   // to make organization a little easier.
-  #include "include/mouse_tp.dtsi"
+  #include "../../config/include/mouse_tp.dtsi"
 #endif  // HAS_MOUSE_TP
 
 / {
@@ -28,10 +28,7 @@
         MouseTP_layer {
             display-name = "TP";
             bindings = <
-                &trans                   &trans                   &trans                   &trans                   &msc SCRL_UP             &trans                        &trans                   &trans                   &trans                   &trans                   &trans                    &trans
-                &trans                   &trans                   &trans                   &trans                   &trans                   &trans                        &trans                   &trans                   &trans                   &trans                   &trans                    &trans
-                &trans                   &trans                   &trans                   &trans                   &msc SCRL_DOWN           &trans                        &trans                   &trans                   &trans                   &trans                   &trans                    &trans
-                                                                                &mkp MCLK                &mkp LCLK                &mkp RCLK                     &mkp MCLK                &mkp LCLK                &mkp RCLK
+                &mkp LCLK
             >;
         };
     };

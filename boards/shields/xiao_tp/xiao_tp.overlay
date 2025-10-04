@@ -5,15 +5,15 @@
 
 #include "xiao_tp.dtsi"
 
-// Pick the PS/2 driver - Use GPIO driver for better compatibility
-// #define MOUSE_PS2_DRIVER_UART
+// Pick the PS/2 driver - Use UART driver for better performance
+#define MOUSE_PS2_DRIVER_UART
 
 // Configure pins for Seeed XIAO BLE
-// DATA pin: D0 (P0.02), CLOCK pin: D1 (P0.03)
+// XIAO BLE pin mapping:
+// D0 = P0.02, D1 = P0.03, D2 = P0.04, D3 = P0.05, D4 = P0.06, D5 = P0.07
+// D6 = P0.08, D7 = P0.09, D8 = P0.10, D9 = P0.11, D10 = P0.12, D11 = P0.13
 // PS/2 protocol requires pull-up resistors (4.7kΩ recommended)
 // Note: UART handles reading, GPIO handles writing
-#define MOUSE_PS2_PIN_SCL_PRO_MICRO <&gpio0 3 GPIO_ACTIVE_HIGH>
-#define MOUSE_PS2_PIN_SDA_PRO_MICRO <&gpio0 2 GPIO_ACTIVE_HIGH>
 
 // Configure SDA pin using pinctrl notation for XIAO BLE
 #define MOUSE_PS2_PIN_SDA_PINCTRL <NRF_PSEL(UART_RX, 0, 2)>
@@ -25,8 +25,8 @@
 #define MOUSE_PS2_PIN_UNEXPOSED_TX <NRF_PSEL(UART_TX, 0, 27)>
 #define MOUSE_PS2_PIN_UNEXPOSED_RX <NRF_PSEL(UART_RX, 0, 28)>
 
-// Optional: Configure RESET pin if needed
-#define MOUSE_PS2_PIN_RST_PRO_MICRO <&gpio0 4 GPIO_ACTIVE_HIGH>
+// Optional: Configure RESET pin if needed (D2 = P0.04)
+#define MOUSE_PS2_PIN_RST_PRO_MICRO
 
 // This define can be used in the keymap file to check whether the device tree
 // configs in this file are present
@@ -283,8 +283,8 @@
         uart_ps2: uart_ps2 {
             status="disabled";
             compatible = "uart-ps2";
-            scl-gpios = MOUSE_PS2_PIN_SCL_PRO_MICRO;
-            sda-gpios = MOUSE_PS2_PIN_SDA_PRO_MICRO;
+            scl-gpios = <&gpio0 3 GPIO_ACTIVE_HIGH>;
+            sda-gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
         };
     };
 
@@ -295,8 +295,8 @@
             status = "disabled";
 
             compatible = "gpio-ps2";
-            scl-gpios = MOUSE_PS2_PIN_SCL_PRO_MICRO;
-            sda-gpios = MOUSE_PS2_PIN_SDA_PRO_MICRO;
+            scl-gpios = <&gpio0 3 GPIO_ACTIVE_HIGH>;
+            sda-gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
         };
     };
 
@@ -313,9 +313,7 @@
 	    ps2-device = <&gpio_ps2>;
 #endif
 
-#ifdef MOUSE_PS2_PIN_RST_PRO_MICRO
-        rst-gpios = MOUSE_PS2_PIN_RST_PRO_MICRO;
-#endif
+        rst-gpios = <&gpio0 4 GPIO_ACTIVE_LOW>;
 
     };
 
