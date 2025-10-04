@@ -5,8 +5,8 @@
 
 #include "xiao_tp.dtsi"
 
-// Pick the PS/2 driver - Use UART driver for better performance
-#define MOUSE_PS2_DRIVER_UART
+// Pick the PS/2 driver - Use GPIO driver for hardware reset compatibility
+// #define MOUSE_PS2_DRIVER_UART
 
 // Configure pins for Seeed XIAO BLE
 // XIAO BLE pin mapping:
@@ -294,7 +294,7 @@
 
     / {
         gpio_ps2: gpio_ps2 {
-            status = "disabled";
+            status = "okay";
 
             compatible = "gpio-ps2";
             scl-gpios = <&gpio0 3 GPIO_ACTIVE_HIGH>;
